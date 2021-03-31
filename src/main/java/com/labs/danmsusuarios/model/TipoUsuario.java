@@ -1,8 +1,8 @@
 package com.labs.danmsusuarios.model;
 
 public class TipoUsuario {
-    Integer id;
-    String tipo;
+    private Integer id;
+    private String tipo;
 
     public Integer getId() {
         return id;

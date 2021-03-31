@@ -1,10 +1,10 @@
 package com.labs.danmsusuarios.model;
 
 public class Usuario {
-    Integer id;
-    String user;
-    String password;
-    TipoUsuario tipoUsuario;
+    private Integer id;
+    private String user;
+    private String password;
+    private TipoUsuario tipoUsuario;
 
     public Integer getId() {
         return id;

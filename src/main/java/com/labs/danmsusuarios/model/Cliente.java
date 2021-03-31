@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Cliente {
 
-    Integer id;
-    String razonSocial;
-    String cuit;
-    String mail;
-    Double maxCuentaCorriente;
-    Boolean habilitadoOnline;
-    Usuario user;
-    List<Obra> obras;
+    private Integer id;
+    private String razonSocial;
+    private String cuit;
+    private String mail;
+    private Double maxCuentaCorriente;
+    private Boolean habilitadoOnline;
+    private Usuario user;
+    private List<Obra> obras;
 
     public Integer getId() {
         return id;

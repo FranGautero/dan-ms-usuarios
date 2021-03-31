@@ -1,14 +1,14 @@
 package com.labs.danmsusuarios.model;
 
 public class Obra {
-    Integer id;
-    String descripcion;
-    Float latitud;
-    Float longitud;
-    String direccion;
-    Integer superficie;
-    TipoObra tipo;
-    Cliente cliente;
+    private Integer id;
+    private String descripcion;
+    private Float latitud;
+    private Float longitud;
+    private String direccion;
+    private Integer superficie;
+    private TipoObra tipo;
+    private Cliente cliente;
 
     public Integer getId() {
         return id;

@@ -1,9 +1,9 @@
 package com.labs.danmsusuarios.model;
 
 public class Empleado {
-    Integer id;
-    String mail;
-    Usuario user;
+    private Integer id;
+    private String mail;
+    private Usuario user;
 
     public Integer getId() {
         return id;

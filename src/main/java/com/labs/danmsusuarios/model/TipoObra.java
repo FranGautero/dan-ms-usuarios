@@ -1,8 +1,8 @@
 package com.labs.danmsusuarios.model;
 
 public class TipoObra {
-    Integer id;
-    String descripcion;
+    private Integer id;
+    private String descripcion;
 
     public Integer getId() {
         return id;
