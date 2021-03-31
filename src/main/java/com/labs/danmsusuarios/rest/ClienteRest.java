@@ -40,6 +40,17 @@ public class ClienteRest {
         return ResponseEntity.of(c);
     }
 
+    @GetMapping(path = "/{cuit}")
+    @ApiOperation(value = "Busca un cliente por cuit")
+    public ResponseEntity<Cliente> clientePorCuit(@PathVariable String cuit){
+
+        Optional<Cliente> c =  listaClientes
+                .stream()
+                .filter(unCli -> unCli.getCuit().equals(cuit))
+                .findFirst();
+        return ResponseEntity.of(c);
+    }
+
     @GetMapping
     public ResponseEntity<List<Cliente>> todos(){
         return ResponseEntity.ok(listaClientes);
