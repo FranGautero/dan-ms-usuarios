@@ -1,6 +1,7 @@
 package com.labs.danmsusuarios.rest;
 
-import com.labs.danmsusuarios.model.Empleado;
+
+
 import com.labs.danmsusuarios.model.Obra;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -88,31 +90,32 @@ public class ObraRest {
         return ResponseEntity.of(c);
     }
 
-    //GET Obra por Id cliente
+    //GET Obra por cuit cliente
 
-    @GetMapping(path = "/{idCliente}")
+    @GetMapping(path = "/clienteobra")
     @ApiOperation(value = "Busca un Empleado por id")
-    public ResponseEntity<List<Obra>> obraPorIdCliente(@PathVariable Integer id){
+    public ResponseEntity<List<Obra>> obraPorCuitCliente(@RequestParam(required = false) String cuit, @RequestParam(required = false) String desc){
 
-        List<Obra> c =  listaObras
-                .stream()
-                .filter(unCli -> unCli.getCliente().getId().equals(id)).collect(Collectors.toList());
+        List<Obra> c;
+
+        if(desc == null) {
+             c = listaObras
+                    .stream()
+                    .filter(unCli -> unCli.getCliente().getCuit().equals(cuit)).collect(Collectors.toList());
+
+        }else if(cuit == null){
+             c = listaObras
+                    .stream()
+                    .filter(unCli -> unCli.getTipo().getDescripcion().equals(desc)).collect(Collectors.toList());
+
+        }else{
+             c = listaObras
+                    .stream()
+                    .filter(unCli -> unCli.getTipo().getDescripcion().equals(desc) && unCli.getCliente().getCuit().equals(cuit)).collect(Collectors.toList());
+        }
         return ResponseEntity.ok(c);
     }
 
-    //GET Obra por Tipo Obra
-
-    @GetMapping(path = "/{tipo}")
-    @ApiOperation(value = "Busca un Empleado por id")
-    public ResponseEntity<List<Obra>> obraPorTipoObra(@PathVariable String desc){
-
-        List<Obra> c =  listaObras
-                .stream()
-                .filter(unCli -> unCli.getTipo().getDescripcion().equals(desc)).collect(Collectors.toList());
-        return ResponseEntity.ok(c);
-    }
-
-    //GET todos los Empleados
 
     @GetMapping
     public ResponseEntity<List<Obra>> todos(){
